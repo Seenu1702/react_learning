@@ -11,9 +11,15 @@ const Hello = (props) => {
 }
 
 const App = () => {
+
+  const appHeaderStyle = {
+    color: 'white', 
+    background: 'red'
+  }
+
   return (
     <div>
-      <h1 style={{color: 'white', background: 'red'}}>Greeetings</h1>
+      <h1 style={appHeaderStyle}>Greeetings</h1>
       <Hello name='Seenu' age='25' />  
       <Hello name='Seenu' age='24' />  
     </div>
