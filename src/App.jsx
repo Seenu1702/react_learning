@@ -6,12 +6,12 @@
 const App = () => {
 
   // returns a html
-  // it also execute/contain js code
+  const now = new Date();
 
-  console.log('Hello World');
+  
   return (
     <div>
-      <p>Hello World!</p>
+      <p>Hello World!, it is {now.toString()}</p>
     </div>
   )
 }
