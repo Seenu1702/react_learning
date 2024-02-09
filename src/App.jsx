@@ -1,7 +1,11 @@
-const Hello = () => {
+/* eslint-disable react/prop-types */
+
+const Hello = (props) => {
+  console.log(props)
+  // props will be an object
   return (
     <div>
-      <p>Hello World!</p>
+      <p>Hello { props.name },your age is { props.age }</p>
     </div>
   )
 }
@@ -9,11 +13,9 @@ const Hello = () => {
 const App = () => {
   return (
     <div>
-      <p>Greeetings</p>
-      <Hello />  
-      {/* like functions, components can also be reused */}
-      <Hello /> 
-      <Hello /> 
+      <h1 style={{color: 'white', background: 'red'}}>Greeetings</h1>
+      <Hello name='Seenu' age='25' />  
+      <Hello name='Seenu' age='24' />  
     </div>
   )
 }
