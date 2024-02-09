@@ -1,20 +1,19 @@
-
-// our first component
-// normal javascript function
-// for now it doesn't receive any arguments
-
-const App = () => {
-
-  // returns a html
-  const now = new Date();
-  const a = 10;
-  const b = 20;
-
-  
+const Hello = () => {
   return (
     <div>
-      <p>Hello World!, it is {now.toString()}</p>
-      <p>{ a } plus { b } = {a+b}</p>
+      <p>Hello World!</p>
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <div>
+      <p>Greeetings</p>
+      <Hello />  
+      {/* like functions, components can also be reused */}
+      <Hello /> 
+      <Hello /> 
     </div>
   )
 }
