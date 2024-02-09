@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import './App.css';
 
 const Hello = (props) => {
   console.log(props)
@@ -11,15 +12,9 @@ const Hello = (props) => {
 }
 
 const App = () => {
-
-  const appHeaderStyle = {
-    color: 'white', 
-    background: 'red'
-  }
-
   return (
     <div>
-      <h1 style={appHeaderStyle}>Greeetings</h1>
+      <h1>Greeetings</h1>
       <Hello name='Seenu' age='25' />  
       <Hello name='Seenu' age='24' />  
     </div>
