@@ -1,20 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-
-
-// function Note ({note}){
-//   return(
-//     <li>{note.content}</li>
-//   )
-//   }
-
-  function Note (props){
-
-    const note = props.note;
-    return(
-      <li>{note.content}</li>
-    )
-    }
+import Note from './components/Note';
 
 
 function App(props) {
