@@ -1,22 +1,32 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
-function App(props) {
 
-  // console.log(props);
+// function Note ({note}){
+//   return(
+//     <li>{note.content}</li>
+//   )
+//   }
+
+  function Note (props){
+
+    const note = props.note;
+    return(
+      <li>{note.content}</li>
+    )
+    }
+
+
+function App(props) {
   const {notes} = props;
-  // console.log(notes)
+  
   return (
     <div>
       <h1>Notes</h1>
       <ul>
         {
-          // notes.map(note => {
-          //   return <li key={note.id}>{note.content}</li>
-          // })
-
-          notes.map((note, index) => {
-            return <li key={index}>{note.content}</li>
+          notes.map((note) => {
+            return <Note key={note.id} note = { note} />
           })
         }
       </ul>
