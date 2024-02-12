@@ -24,7 +24,7 @@ const notes = [
     important: true
   },
   {
-    id: 3,
+    id: 5,
     content: 'Props Vs State',
     important: false
   }
