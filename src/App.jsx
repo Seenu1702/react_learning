@@ -5,12 +5,12 @@ class Hello extends Component{
   render(){
     // console.log(this.props);
 
-    const {name} = this.props;
+    const {name, age} = this.props;
 
     return(
       <div>
         {/* <p>Hello {this.props.name}!</p> */}
-        <p>Hello {name}!</p>
+        <p>Hello {name}! your age is {age}</p>
 
       </div>
     )
@@ -22,7 +22,7 @@ class App extends Component{
   render(){
     return (
       <div>
-        <Hello name="Seenu"/>
+        <Hello name="Seenu" age={25}/>
       </div>
     )
   }
