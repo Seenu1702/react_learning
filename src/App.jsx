@@ -14,9 +14,9 @@ function App(props) {
   return (
     <div>
       <h1>Notes</h1>
-      <select>
+      <ul>
         { optionList }
-      </select>
+      </ul>
     </div>
   )
 }

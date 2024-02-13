@@ -2,8 +2,14 @@
 function Note (props){
 
     const note = props.note;
+    // conditional rendering
+    if(note.important){
+        return(
+            <li>{note.content} ✔ </li>
+          ) 
+    }
     return(
-      <option>{note.content}</option>
+      <li>{note.content}</li>
     )
 }
 
