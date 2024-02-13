@@ -10,6 +10,15 @@ function App(props) {
     optionList.push(<Note key={note.id} note = { note} />)
     
   });
+
+  function addNote(event){
+    event.preventDefault();
+    // console.log('button clicked');
+
+    // console.log(event);
+    console.log(event.target.elements.note.value);
+
+  }
   
   return (
     <div>
@@ -17,6 +26,10 @@ function App(props) {
       <ul>
         { optionList }
       </ul>
+      <form onSubmit={addNote}>
+        <input type="text" name='note' />
+        <button type='submit'>Save Note</button>
+      </form>
     </div>
   )
 }
