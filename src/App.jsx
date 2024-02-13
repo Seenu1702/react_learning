@@ -1,24 +1,20 @@
-//  import React from 'react'; // not required from react17
+/* eslint-disable react/prop-types */
+import React from 'react'
 
+function Hello(props){
+  return(
+    <div>
+      <p>Hello {props.name}!</p>
+    </div>
+  )
+}
 
-
-// Function Component
-// function App() {
-//   return (
-//     <div>App</div>
-//   )
-// }
-
-// export default App;
-
-// Class Component
-import { Component } from "react";
-class App extends Component{
-  render(){         //override the render method
-    return(
-      <div>Hello World!</div>
-    )
-  }
+function App() {
+  return (
+    <div>
+      <Hello name="Seenu"/>
+    </div>
+  )
 }
 
 export default App;
