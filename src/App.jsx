@@ -1,20 +1,13 @@
-/* eslint-disable react/prop-types */
-import React from 'react'
+import { Component } from "react";
 
-function Hello(props){
-  return(
-    <div>
-      <p>Hello {props.name}!</p>
-    </div>
-  )
-}
-
-function App() {
-  return (
-    <div>
-      <Hello name="Seenu"/>
-    </div>
-  )
+class App extends Component{
+  render(){
+    return (
+      <div>
+        <p>Hello Guest!</p>
+      </div>
+    )
+  }
 }
 
 export default App;
