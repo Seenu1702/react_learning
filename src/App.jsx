@@ -13,10 +13,10 @@ function App(props) {
 
   function addNote(event){
     event.preventDefault();
-    // console.log('button clicked');
+    console.log('button clicked');
 
     // console.log(event);
-    console.log(event.target.elements.note.value);
+    // console.log(event.target.elements.note.value);
 
   }
   
@@ -26,9 +26,9 @@ function App(props) {
       <ul>
         { optionList }
       </ul>
-      <form onSubmit={addNote}>
+      <form>
         <input type="text" name='note' />
-        <button type='submit'>Save Note</button>
+        <button onClick={addNote}>Save Note</button>
       </form>
     </div>
   )
