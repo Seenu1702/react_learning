@@ -1,57 +1,23 @@
-import { Component } from "react";
+/* eslint-disable react/prop-types */
 
-class App extends Component{
+/*
+Hooks:
+  - any function that starts with "use" is called Hooks
+  - they are special functions that are only available while React is rendering
 
-  constructor(props){
-    super(props);
+To create a counter, where the value is increased as a funcion of time or at the click of a button.
 
-    this.state = {
-      goodCount: 0,
-      badCount: 0,
-      neutralCount: 0,
-    }
-  }
+*/
+import React from 'react';
 
-  handleGoodClick = () => {
-    this.setState((prevState) => ({
-      goodCount: prevState.goodCount + 1,
-    }))
-  }
+function App(props) {
 
-  handleBadClick = () => {
-    this.setState((prevState) => ({
-      badCount: prevState.badCount + 1,
-    }))
-  }
-
-  handleNeutralClick = () => {
-    this.setState((prevState) => ({
-      neutralCount: prevState.neutralCount + 1,
-    }))
-  }
-
-  handleResetClick = () => {
-    this.setState({
-      goodCount: 0,
-      badCount: 0,
-      neutralCount: 0,
-    })
-  }
-  render(){
-    return(
-      <div>
-        <h3>Give Feedback!</h3>
-        <button onClick={this.handleGoodClick}>Good</button>
-        <button onClick={this.handleBadClick}>Bad</button>
-        <button onClick={this.handleNeutralClick}>Neutral</button>
-        <h3>Statistics: </h3>
-        <p>Good: {this.state.goodCount}</p>
-        <p>Bad: {this.state.badCount}</p>
-        <p>Neutral: {this.state.neutralCount}</p>
-        <button onClick={this.handleResetClick}>Reset Feedbacks</button>
-      </div>
-    )
-  }
+  // console.log(props);
+  let {counter} = props;
+  console.log(counter)
+  return (
+    <div className='p-2'>{counter}</div>
+  )
 }
 
 export default App;
