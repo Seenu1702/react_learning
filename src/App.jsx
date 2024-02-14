@@ -1,31 +1,32 @@
-/* eslint-disable react/prop-types */
 import { Component } from "react";
 
-class Hello extends Component{
-  render(){
-    // console.log(this.props);
-
-    const {name, age} = this.props;
-
-    return(
-      <div>
-        {/* <p>Hello {this.props.name}!</p> */}
-        <p>Hello {name}! your age is {age}</p>
-
-      </div>
-    )
-  }
-}
-
-
 class App extends Component{
+
+  // class component life cycle
+
+  // Called immediately after a component is mounted. Setting state here will trigger re-rendering.
+  componentDidMount(){
+    console.log('component mounted');
+  }
+
+  // Called immediately after component updated occurs in DOM and called on state/props changes Not called for the initial render.
+  componentDidUpdate(){
+    console.log('component updated');
+  }
+
+  componentWillUnmount(){
+    // invoked just before the component removed from the DOM
+    // releasing memory or resources
+    // detaching the events/
+    // cancelling timers
+    
+  }
+
+
   render(){
-    return (
-      <div>
-        <Hello name="Seenu" age={25}/>
-      </div>
+    return(
+      <div>Hello!</div>
     )
   }
 }
-
 export default App;
