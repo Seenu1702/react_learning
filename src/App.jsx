@@ -1,44 +1,32 @@
-/* eslint-disable react/prop-types */
-
-/*
-Hooks:
-  - any function that starts with "use" is called Hooks
-  - they are special functions that are only available while React is rendering
-
-To create a counter, where the value is increased as a funcion of time or at the click of a button.
-
-*/
-import React, { useState } from 'react';
-import Button from './components/Button';
-import Display from './components/Display';
-
+import React, { useEffect, useState } from 'react';
 
 function App() {
 
-  const [counter, setCounter] =  useState(0);
+  // create a state to store the data fetched from the API
 
-  const handlePlusClick = () => {
-    setCounter(counter + 1);
-  }
+  const [data, setData] = useState(null);
 
-  const handleZeroClick = () => {
-    setCounter(0);
-  }
-
-  const handleMinusClick = () => {
-    if(counter > 0){
-      setCounter(counter - 1);
-    }
-  }
-
-  console.log('rendering..', counter);
+  // use the useEffect hook to run the function to call the api only one time
+  useEffect(()=>{
+    fetch(`https://jsonplaceholder.typicode.com/posts`)
+      .then(response => response.json())
+      .then(result => setData(result));
+  },[]);
+  // console.log(data);
 
   return (
     <div>
-      <Display counter={counter}/>
-      <Button text="Plus" handleClick={handlePlusClick}/>
-      <Button text="Minus" handleClick={handleMinusClick}/>
-      <Button text="Zero" handleClick={handleZeroClick}/>
+      <h1>API Data</h1>
+      {
+        data ? (
+          data.map(item =>{
+            return <li key={item.id}>{item.title}</li>
+          })
+        ) : (
+          <p>Loading data ...</p>
+        )
+      }
+      
     </div>
   )
 }
