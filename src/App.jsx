@@ -2,30 +2,29 @@ import { Component } from "react";
 
 class App extends Component{
 
-  // class component life cycle
+  constructor(props){
+    super(props); //to call the parent class constructor
 
-  // Called immediately after a component is mounted. Setting state here will trigger re-rendering.
-  componentDidMount(){
-    console.log('component mounted');
+    this.state = {
+      count: 0,
+    }
+
   }
 
-  // Called immediately after component updated occurs in DOM and called on state/props changes Not called for the initial render.
-  componentDidUpdate(){
-    console.log('component updated');
-  }
+  increment = () => {
+    //to change/update the state(data) of the count
 
-  componentWillUnmount(){
-    // invoked just before the component removed from the DOM
-    // releasing memory or resources
-    // detaching the events/
-    // cancelling timers
-    
+    this.setState({
+      count: this.state.count + 1,
+    })
   }
-
 
   render(){
     return(
-      <div>Hello!</div>
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
     )
   }
 }
