@@ -9,19 +9,9 @@ To create a counter, where the value is increased as a funcion of time or at the
 
 */
 import React, { useState } from 'react';
+import Button from './components/Button';
+import Display from './components/Display';
 
-
-function Display({counter}){
-  return(
-    <div className='p-2'>{counter}</div>
-  )
-}
-
-function Button({text, handleClick}){
-  return(
-    <button onClick={handleClick}>{text}</button>
-  )
-}
 
 function App() {
 
