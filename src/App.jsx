@@ -29,6 +29,14 @@ class App extends Component{
       neutralCount: prevState.neutralCount + 1,
     }))
   }
+
+  handleResetClick = () => {
+    this.setState({
+      goodCount: 0,
+      badCount: 0,
+      neutralCount: 0,
+    })
+  }
   render(){
     return(
       <div>
@@ -40,6 +48,7 @@ class App extends Component{
         <p>Good: {this.state.goodCount}</p>
         <p>Bad: {this.state.badCount}</p>
         <p>Neutral: {this.state.neutralCount}</p>
+        <button onClick={this.handleResetClick}>Reset Feedbacks</button>
       </div>
     )
   }
