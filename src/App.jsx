@@ -18,10 +18,18 @@ function App() {
     setCounter(counter + 1);
   }
 
+  const handleZeroClick = () => {
+    setCounter(0);
+  }
+
+  console.log('rendering..', counter);
+
   return (
     <div>
       <div className='p-2'>{counter}</div>
       <button onClick={handlePlusClick}>Plus</button>
+      <button onClick={handleZeroClick}>Zero</button>
+
     </div>
   )
 }
