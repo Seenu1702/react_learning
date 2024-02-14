@@ -14,15 +14,15 @@ function App() {
 
   const [counter, setCounter] =  useState(0);
 
-  setTimeout(() => {
-    setCounter(counter + 1)
-  },1000
-  )
-
-  console.log('rendering...',counter)
+  const handlePlusClick = () => {
+    setCounter(counter + 1);
+  }
 
   return (
-    <div className='p-2'>{counter}</div>
+    <div>
+      <div className='p-2'>{counter}</div>
+      <button onClick={handlePlusClick}>Plus</button>
+    </div>
   )
 }
 
