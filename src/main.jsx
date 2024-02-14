@@ -31,22 +31,7 @@ const notes = [
   }
 ]
 
-// create a variable called counter and initialize the value 1
-
-let counter = 1;
-
-let refresh = () =>{
-  ReactDOM.createRoot(document.getElementById('root')).render(<App counter={counter}/>);
-}
-
-// refresh();
-// counter = counter + 1;
-// refresh();
-// counter = counter + 1;
-// refresh();
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
 
-setInterval(() => {
-  refresh();
-  counter+= 1;
-},1000);
+
