@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-labels */
 import { Component } from "react";
 
 class App extends Component{
@@ -11,11 +12,23 @@ class App extends Component{
 
   }
 
-  increment = () => {
-    //to change/update the state(data) of the count
+  handlePlusClick = ()=>{
+    this.setState((prevState) =>({
+      count: prevState.count + 1,
+    }))
+  }
 
+  handleMinusClick = () =>{
+   if(this.state.count > 0){
+    this.setState((prevState) => ({
+      count: prevState.count - 1,
+    }))
+   } 
+  }
+
+  handleResetClick = () =>{
     this.setState({
-      count: this.state.count + 1,
+      count: 0,
     })
   }
 
@@ -23,7 +36,10 @@ class App extends Component{
     return(
       <div>
         <p>Count: {this.state.count}</p>
-        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.handlePlusClick}>Plus</button>
+        <button onClick={this.handleMinusClick}>Minus</button>
+        <button onClick={this.handleResetClick}>Reset</button>
+
       </div>
     )
   }
