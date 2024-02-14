@@ -17,6 +17,12 @@ function Display({counter}){
   )
 }
 
+function Button({text, handleClick}){
+  return(
+    <button onClick={handleClick}>{text}</button>
+  )
+}
+
 function App() {
 
   const [counter, setCounter] =  useState(0);
@@ -40,9 +46,9 @@ function App() {
   return (
     <div>
       <Display counter={counter}/>
-      <button onClick={handlePlusClick}>Plus</button>
-      <button onClick={handleZeroClick}>Zero</button>
-      <button onClick={handleMinusClick}>Minus</button>
+      <Button text="Plus" handleClick={handlePlusClick}/>
+      <Button text="Minus" handleClick={handleMinusClick}/>
+      <Button text="Zero" handleClick={handleZeroClick}/>
     </div>
   )
 }
