@@ -3,9 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className='mt-4 p-2'>
       <h1>Hello World!</h1>
-      <button>dafdsfs</button>
+      <button>submit</button>
     </div>
   )
 }
