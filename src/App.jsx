@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
 
-  // create a state to store the data fetched from the API
-
-  const [data, setData] = useState(null);
-
-  // use the useEffect hook to run the function to call the api only one time
   useEffect(()=>{
-    fetch(`https://jsonplaceholder.typicode.com/posts`)
-      .then(response => response.json())
-      .then(result => setData(result));
-  },[]);
-  // console.log(data);
+    document.title = `Count: ${count}`
+  },[count]);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  }
+console.log(count);
 
   return (
     <div>
-      <h1>API Data</h1>
-      {
-        data ? (
-          data.map(item =>{
-            return <li key={item.id}>{item.title}</li>
-          })
-        ) : (
-          <p>Loading data ...</p>
-        )
-      }
-      
+      <h1>Document Title Change</h1>
+      <button onClick={handleClick}>Change Count</button>
     </div>
   )
 }
