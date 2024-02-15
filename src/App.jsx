@@ -2,9 +2,10 @@ import React from 'react';
 import Home from './components/Home';
 import Notes from './components/Notes';
 import Users from './components/Users';
+import Note from './components/Note';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-function App() {
+function App({notes}) {
 
   const padding = {
     padding: 5,
@@ -20,8 +21,9 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/notes' element={<Notes />} />
+          <Route path='/notes' element={<Notes notes = { notes }/>} />
           <Route path='/users' element={<Users />} />
+          <Route path='/notes/:noteid' element={<Note notes={notes}/>} />
         </Routes>
       </Router>
     </div>

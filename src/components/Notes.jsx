@@ -1,8 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Notes() {
+function Notes({notes}) {
+
+    console.log(notes);
   return (
-    <div>Notes</div>
+    <div>
+        <h2>Notes</h2>
+        <ul>
+            {
+                notes.map(note => {
+                    return <li key={note.id}><Link to={`/notes/${note.id}`}>{note.content}</Link></li>
+                })
+            }
+        </ul>
+    </div>
   )
 }
 
