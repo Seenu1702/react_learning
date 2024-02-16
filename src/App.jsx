@@ -1,56 +1,25 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import Note from './components/Note';
+// useRef - hook: to create a mutable reference to an element of a value that persists across render cycles.
 
-function App(props) {
-  const [notes, setNotes] = useState(props.notes);
-  const [newNote, setNewNote] = useState('');
+// Example: focus an input text element on click of a button
 
-  // console.log(notes);
 
-  const addNote = (event) => {
-    event.preventDefault();
-    // console.log('button clicked');
-    console.log(newNote);
+import React, { useRef } from 'react';
 
-    const noteObject = {
-      id: notes.length + 1,
-      content: newNote,
-      important: Math.random() < 0.5,
-    }
+function App() {
 
-    setNotes(notes.concat(noteObject)); 
-    setNewNote('');
-    
+  const inputRef = useRef(null);
+
+  const buttonhandler = () => {
+    inputRef.current.focus();
   }
-
-  const handleNoteChange = (event) => {
-    // console.log(event.target.value);
-    setNewNote(event.target.value);
-  }
-
   return (
     <div>
-      <h2>Notes</h2>
-      <ul>
-        {
-          notes.map(note => 
-            <Note key={note.id} note={note}/>)
-        }
-      </ul>
-      
-        <form onSubmit={addNote}>
-          <input 
-            value={newNote}
-            placeholder='add a new note...'
-            onChange={handleNoteChange}
-            
-          />
-          <button type='submit'>Save Note</button>
-        </form>
-      </div>
-    
+      <input 
+      type="text"
+      ref={inputRef} />
+
+      <button onClick={buttonhandler}>Focus Input</button>
+    </div>
   )
 }
 
