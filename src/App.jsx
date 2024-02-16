@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState } from 'react';
 import ChildComponent from './components/ChildComponent';
-
+// to avoid props drilling, we can use useContext() and creatContext()...
 // create a context
 const MessageContext = createContext();
 
