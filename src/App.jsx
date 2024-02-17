@@ -1,26 +1,28 @@
-// useRef - hook: to create a mutable reference to an element of a value that persists across render cycles.
-
-// Example: focus an input text element on click of a button
-
-
-import React, { useRef } from 'react';
-import SetInputFocus from './components/SetInputFocus';
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useRef } from 'react'
 
 function App() {
 
-  const inputRef = useRef(null);
+  const counterRef = useRef(0);
 
-  const buttonhandler = () => {
-    inputRef.current.focus();
-  }
+  useEffect(()=> {
+    const interval = setInterval(() => {
+      counterRef.current += 1;
+      console.log('Count:', counterRef.current);
+    }, 1000)
+
+    return() => {
+      clearInterval(interval);
+    };
+    
+  },[counterRef])
+
+  
+
   return (
     <div>
-      <input 
-      type="text"
-      ref={inputRef} />
-
-      <button onClick={buttonhandler}>Focus Input</button>
-      <SetInputFocus inputRef = {inputRef}/>
+      <p>Counter: {counterRef.current}</p>
     </div>
   )
 }
