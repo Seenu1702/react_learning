@@ -4,6 +4,7 @@
 
 
 import React, { useRef } from 'react';
+import SetInputFocus from './components/SetInputFocus';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       ref={inputRef} />
 
       <button onClick={buttonhandler}>Focus Input</button>
+      <SetInputFocus inputRef = {inputRef}/>
     </div>
   )
 }
