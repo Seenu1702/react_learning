@@ -8,6 +8,8 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import ReadNotes from './components/ReadNotes';
 import CreateNote from './components/CreateNote';
+import EditNote from './components/EditNote';
+import DeleteNote from './components/DeleteNote';
 
 
 // to install json server
@@ -71,15 +73,6 @@ function App() {
 const newNoteRef = useRef(null);
 
 
-
-
-
-
-
-  // console.log(notes);
-
-  
-
   const handleStatusChange = (event) => {
     // console.log(event.target.value);
     setShowStatus(event.target.value);
@@ -97,12 +90,16 @@ const newNoteRef = useRef(null);
         <Link to='/' style={padding}>Dashboard</Link>
         <Link to='/read' style={padding}>Read Notes</Link>
         <Link to='/create-note' style={padding}>Create Notes</Link>
+        <Link to='/edit-note' style={padding}>Create Notes</Link>
+        <Link to='/delete-note' style={padding}>Create Notes</Link>
       </div>
 
       <Routes>
         <Route path='/' element={<Dashboard />} />
         <Route path='/read' element={<ReadNotes handleStatusChange = {handleStatusChange} showStatus = {showStatus} notes = {notes} />} />
         <Route path='/create-note' element={<CreateNote addNote={addNote} setNewNoteContent = {setNewNoteContent} setNewNoteImportant = {setNewNoteImportant}newNoteContent = {newNoteContent} newNoteImportant = {newNoteImportant} newNoteRef = {newNoteRef} />} />
+        <Route path='/edit-note' element={<EditNote />} />
+        <Route path='/delete-note' element={<DeleteNote />} />
       </Routes>
 
     </Router>

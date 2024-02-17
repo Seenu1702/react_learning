@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 
@@ -6,6 +7,7 @@ function CreateNote({addNote, setNewNoteContent, setNewNoteImportant, newNoteCon
 useEffect(() =>{
   newNoteRef.current.focus();
 },[])
+
   return (
     <div>
         <h2>Add a New Note</h2>
