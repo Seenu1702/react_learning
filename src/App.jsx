@@ -4,6 +4,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import ReadNotes from './components/ReadNotes';
+import CreateNote from './components/CreateNote';
 
 
 // to install json server
@@ -66,9 +70,7 @@ function App() {
 
 const newNoteRef = useRef(null);
 
-useEffect(() =>{
-  newNoteRef.current.focus();
-},[])
+
 
 
 
@@ -76,18 +78,7 @@ useEffect(() =>{
 
   // console.log(notes);
 
-  let filterdNotes = (notes, showStatus) => {
-    switch(showStatus){
-      case 'all':
-        return notes;
-      case 'imp':
-        return notes.filter(note => note.important === true);
-      case 'nonimp':
-        return notes.filter(note => note.important === false);
-    }
-  }
-
-  let notesFiltered = filterdNotes(notes, showStatus);
+  
 
   const handleStatusChange = (event) => {
     // console.log(event.target.value);
@@ -95,71 +86,26 @@ useEffect(() =>{
     
   }
   
-  return (
-    <div>
-      <h2>Notes</h2>
-      <label className='label'>
-        <input 
-          type="radio" 
-          name='filter'
-          value='all'  
-          checked= {showStatus === 'all'}
-          onChange={handleStatusChange}/> All Notes
-      </label>
-      <label className='label'>
-        <input 
-          type="radio"
-          name='filter'
-          value='imp'
-          checked= {showStatus === 'imp'}
-          onChange={handleStatusChange} /> Important Notes
-      </label>
-      <label className='label'>
-        <input 
-          type="radio"
-          name='filter'
-          value='nonimp'
-          checked= {showStatus === 'nonimp'}
-          onChange={handleStatusChange} /> Non Important Notes
-      </label>
-      <ul>
-        {
-          notesFiltered.map(note => 
-            <li key={note.id}>{note.content}</li>
-            )
-        }
-      </ul>
+  const padding = {
+    paddingRight : 15,
+  }
 
-      <hr />
-      <h2>Add a New Note</h2>
-      <form onSubmit={addNote}>
-      <label>
-        Content : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text"
-          placeholder='type a new note...'
-          onChange={(e) => setNewNoteContent(e.target.value)}
-          value={newNoteContent}
-          ref={newNoteRef}
-          required
-         />
-      </label>
-      <br /><br />
-      <label>
-        Is Important : &nbsp;&nbsp;
-        <select
-          onChange={(e) => setNewNoteImportant(e.target.value)}
-          value={newNoteImportant}
-          required
-          >
-          <option>---Select---</option>
-          <option>True</option>
-          <option>False</option>
-        </select>
-      </label>
-      <br /><br />
-      <button type='submit'>Add New Note</button>
-      </form>
-    </div>
+  return (
+    <Router>
+
+      <div>
+        <Link to='/' style={padding}>Dashboard</Link>
+        <Link to='/read' style={padding}>Read Notes</Link>
+        <Link to='/create-note' style={padding}>Create Notes</Link>
+      </div>
+
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/read' element={<ReadNotes handleStatusChange = {handleStatusChange} showStatus = {showStatus} notes = {notes} />} />
+        <Route path='/create-note' element={<CreateNote addNote={addNote} setNewNoteContent = {setNewNoteContent} setNewNoteImportant = {setNewNoteImportant}newNoteContent = {newNoteContent} newNoteImportant = {newNoteImportant} newNoteRef = {newNoteRef} />} />
+      </Routes>
+
+    </Router>
     
   )
 }

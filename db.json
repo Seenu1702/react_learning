@@ -26,13 +26,18 @@
       "important": false
     },
     {
-      "id": 6,
+      "id": "6",
       "content": "Crud with React",
       "important": true
     },
     {
-      "id": 7,
+      "id": "7",
       "content": "API calls using axios",
+      "important": false
+    },
+    {
+      "id": 8,
+      "content": "Redux",
       "important": false
     }
   ]
