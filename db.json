@@ -1,0 +1,39 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "content": "Working with List",
+      "important": true
+    },
+    {
+      "id": "2",
+      "content": "Usage of Keys",
+      "important": false
+    },
+    {
+      "id": "3",
+      "content": "Conditional Rendering",
+      "important": true
+    },
+    {
+      "id": "4",
+      "content": "Handling Events",
+      "important": true
+    },
+    {
+      "id": "5",
+      "content": "Props Vs State",
+      "important": false
+    },
+    {
+      "id": 6,
+      "content": "Crud with React",
+      "important": true
+    },
+    {
+      "id": 7,
+      "content": "API calls using axios",
+      "important": false
+    }
+  ]
+}

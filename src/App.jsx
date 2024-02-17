@@ -3,8 +3,17 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
+import axios from 'axios';
 
-function App(props) {
+
+// to install json server
+// npm install -g json-server
+
+// to start the server
+// npx -v
+// npx json-server --port 3000 --watch db.json
+
+function App() {
 
   const [notes, setNotes] = useState([]);
   const [showStatus, setShowStatus] = useState('all')
@@ -12,6 +21,20 @@ function App(props) {
   // state for adding new note...
   const [newNoteContent, setNewNoteContent] = useState('');
   const [newNoteImportant, setNewNoteImportant] = useState('');
+
+  async function fetchNotes(){
+    try{
+      const response = await axios.get('http://localhost:3000/notes/');
+    setNotes(response.data);
+    }
+    catch(error){
+      console.log('Failed to fetch notes:', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
   const addNote = (event) => {
     event.preventDefault();
@@ -26,8 +49,14 @@ function App(props) {
 
     // console.log(noteObject);
 
-    setNotes(notes.concat(noteObject));
+    // setNotes(notes.concat(noteObject));
+    axios
+  .post('http://localhost:3000/notes', noteObject)
+  .then(response => {
+    console.log('new note added successfully..')
+  })
 
+    fetchNotes();
     // clear the inpuuts
     setNewNoteContent('');
     setNewNoteImportant('');
@@ -41,11 +70,9 @@ useEffect(() =>{
   newNoteRef.current.focus();
 },[])
 
-  // get the data
-  useEffect(()=>{
-    // run for the first time and only once
-    setNotes(props.notes);
-  }, []);
+
+
+
 
   // console.log(notes);
 
