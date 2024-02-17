@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 function App(props) {
@@ -9,6 +9,37 @@ function App(props) {
   const [notes, setNotes] = useState([]);
   const [showStatus, setShowStatus] = useState('all')
 
+  // state for adding new note...
+  const [newNoteContent, setNewNoteContent] = useState('');
+  const [newNoteImportant, setNewNoteImportant] = useState('');
+
+  const addNote = (event) => {
+    event.preventDefault();
+// console.log(newNoteContent, newNoteImportant);
+
+    // create a new note object
+    let noteObject = {
+      id: notes.length + 1,
+      content: newNoteContent,
+      important: newNoteImportant === 'True',
+    }
+
+    // console.log(noteObject);
+
+    setNotes(notes.concat(noteObject));
+
+    // clear the inpuuts
+    setNewNoteContent('');
+    setNewNoteImportant('');
+}
+
+
+
+const newNoteRef = useRef(null);
+
+useEffect(() =>{
+  newNoteRef.current.focus();
+},[])
 
   // get the data
   useEffect(()=>{
@@ -71,6 +102,36 @@ function App(props) {
             )
         }
       </ul>
+
+      <hr />
+      <h2>Add a New Note</h2>
+      <form onSubmit={addNote}>
+      <label>
+        Content : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text"
+          placeholder='type a new note...'
+          onChange={(e) => setNewNoteContent(e.target.value)}
+          value={newNoteContent}
+          ref={newNoteRef}
+          required
+         />
+      </label>
+      <br /><br />
+      <label>
+        Is Important : &nbsp;&nbsp;
+        <select
+          onChange={(e) => setNewNoteImportant(e.target.value)}
+          value={newNoteImportant}
+          required
+          >
+          <option>---Select---</option>
+          <option>True</option>
+          <option>False</option>
+        </select>
+      </label>
+      <br /><br />
+      <button type='submit'>Add New Note</button>
+      </form>
     </div>
     
   )
