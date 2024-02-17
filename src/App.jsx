@@ -1,28 +1,14 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useRef } from 'react'
+import React, { useState } from 'react';
 
 function App() {
 
-  const counterRef = useRef(0);
-
-  useEffect(()=> {
-    const interval = setInterval(() => {
-      counterRef.current += 1;
-      console.log('Count:', counterRef.current);
-    }, 1000)
-
-    return() => {
-      clearInterval(interval);
-    };
-    
-  },[counterRef])
-
-  
-
+  const [count, setCount] = useState(0);
   return (
     <div>
-      <p>Counter: {counterRef.current}</p>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={() => setCount(0)}>Reset</button>
     </div>
   )
 }
