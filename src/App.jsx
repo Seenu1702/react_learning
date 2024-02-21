@@ -90,16 +90,16 @@ const newNoteRef = useRef(null);
         <Link to='/' style={padding}>Dashboard</Link>
         <Link to='/read' style={padding}>Read Notes</Link>
         <Link to='/create-note' style={padding}>Create Notes</Link>
-        <Link to='/edit-note' style={padding}>Create Notes</Link>
-        <Link to='/delete-note' style={padding}>Create Notes</Link>
+        <Link to='/edit-note' style={padding}>Edit Notes</Link>
+        <Link to='/delete-note' style={padding}>Delete Notes</Link>
       </div>
 
       <Routes>
         <Route path='/' element={<Dashboard />} />
         <Route path='/read' element={<ReadNotes handleStatusChange = {handleStatusChange} showStatus = {showStatus} notes = {notes} />} />
         <Route path='/create-note' element={<CreateNote addNote={addNote} setNewNoteContent = {setNewNoteContent} setNewNoteImportant = {setNewNoteImportant}newNoteContent = {newNoteContent} newNoteImportant = {newNoteImportant} newNoteRef = {newNoteRef} />} />
-        <Route path='/edit-note' element={<EditNote />} />
-        <Route path='/delete-note' element={<DeleteNote />} />
+        <Route path='/edit-note' element={<EditNote notes={notes} setNotes={setNotes}/>} />
+        <Route path='/delete-note' element={<DeleteNote notes={notes} setNotes={setNotes}/>} />
       </Routes>
 
     </Router>
