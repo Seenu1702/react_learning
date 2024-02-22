@@ -36,6 +36,9 @@ const notes = [
   }
 ]
 
+
+// create a reducer function
+// having the arguments inital state and aciton
 const counterReducer = (state = 0, action) =>{
   switch (action.type){
     case 'INCR':
@@ -49,14 +52,24 @@ const counterReducer = (state = 0, action) =>{
   }
 }
 
-
+// create a new store
 const store = createStore(counterReducer);
 
-  ReactDOM.createRoot(document.getElementById('root')).render(
-    <Provider store = {store}>
-      <App />
-    </Provider>
-  );
+// subscriber method is called whenever we dispatch an action
+
+store.subscribe(() => {
+  const stateNow = store.getState();
+  console.log(stateNow);
+})
+
+// console.log(store.getState());
+store.dispatch({type: 'INCR'});
+store.dispatch({type: 'INCR'});
+store.dispatch({type: 'DECR'});
+store.dispatch({type: 'ZERO'});
+// console.log(store.getState());
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
 
 
